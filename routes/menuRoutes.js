@@ -1,14 +1,13 @@
-// TODO C: Routing Menu (semua endpoint publik, tanpa autentikasi)
-//   GET    /          daftar menu
-//   GET    /:id       detail menu
-//   POST   /          tambah menu
-//   PUT    /:id       ubah menu
-//   DELETE /:id       hapus menu
-
 const express = require("express");
 const router = express.Router();
-// TODO C1: require menuController dari ../controllers/menuController
 
-// TODO C1: daftarkan kelima route di atas ke fungsi controller yang sesuai
+const menuController = require("../controllers/menuController");
+
+// C1: Daftarkan kelima route
+router.get("/", menuController.getAllMenu);
+router.get("/:id", menuController.getMenuById);
+router.post("/", menuController.createMenu);
+router.put("/:id", menuController.updateMenu);
+router.delete("/:id", menuController.deleteMenu);
 
 module.exports = router;
